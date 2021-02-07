@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import PropertyCard from '../PropertyCard';
 import './PropertyListing.scss';
 
-const PropertyListing = () => {
-  const [properties, setProperties] = useState([]);
-
-  const fetchData = async () => {
-    const PROPERTY_URL = 'http://localhost:4000/api/properties'
-    try {
-      const result = await fetch(PROPERTY_URL)
-        .then(res => res.json());
-      const properties = result.slice(0, 5);
-      setProperties(properties);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-
+const PropertyListing = ({ properties }) => {
 	return (
 		<div className="PropertyListing">
 			{
@@ -29,5 +12,27 @@ const PropertyListing = () => {
 		</div>
 	)
 };
+
+PropertyListing.propTypes = {
+  properties: PropTypes.arrayOf(
+    PropTypes.shape({
+      bedrooms: PropTypes.number,
+      branchName: PropTypes.string,
+      contactUrl: PropTypes.string,
+      displayAddress: PropTypes.string,
+      id: PropTypes.number,
+      mainImage: PropTypes.string,
+      price: PropTypes.number,
+      propertyTitle: PropTypes.string,
+      propertyType: PropTypes.string,
+      propertyUrl: PropTypes.string,
+      summary: PropTypes.string
+    })
+  )
+}
+
+PropertyListing.defaultProps = {
+  bag: []
+}
 
 export default PropertyListing;
