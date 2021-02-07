@@ -1,38 +1,35 @@
 {
-  "name": "app-test-laliga",
+  "name": "fed-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-redux": "^7.2.2",
-    "react-router": "^5.2.0",
-    "react-scripts": "4.0.2",
-    "redux": "^4.0.5",
-    "redux-saga": "^1.1.3",
-    "styled-components": "^5.2.1",
-    "stylelint-webpack-plugin": "^2.1.1",
-    "web-vitals": "^1.0.1"
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "^3.1.0"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.19.1",
+    "npm-run-all": "^4.1.5",
+    "prop-types": "^15.7.2"
   },
   "scripts": {
-    "start": "react-app-rewired start",
+    "start": "run-p server start:react-scripts",
+    "server": "nodemon ./server/index.js",
+    "start:react-scripts": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint:js": "eslint --ignore-path .gitignore --ext .js .",
-    "lint:css": "stylelint './src/**/*.js'",
-    "lint": "yarn lint:js && yarn lint:css && && echo \"Lint free! 🎉\""
+    "test:watch": "react-scripts test --watch",
+    "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:4000",
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -45,23 +42,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "eslint": "^7.2.0",
-    "eslint-config-airbnb": "18.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-config-react-app": "^6.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "install-peerdeps": "^3.0.3",
-    "prettier": "^2.2.1",
-    "prettier-eslint": "^12.0.0",
-    "prettier-stylelint": "^0.4.2",
-    "react-app-rewired": "^2.1.8",
-    "stylelint": "^13.9.0",
-    "stylelint-config-standard": "^20.0.0"
   }
 }

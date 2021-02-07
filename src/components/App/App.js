@@ -1,13 +1,19 @@
 import React from 'react';
-import ListUsers from '../ListUsers/ListUsers';
+import './App.scss';
+import Header from '../Header';
+import SortAndFilter from '../SortAndFilter';
+import PropertyListing from '../PropertyListing';
 
-const App = () => (
-  <div className="row mt-5">
-    <div className="col-md-4 offset-md-1">
-      <h2>List Users</h2>
-      <ListUsers />
-    </div>
-  </div>
-);
+const App = () => {
+    return (
+        <div className="App">
+            <Header/>
+            <main>
+                <SortAndFilter/>
+                <PropertyListing/>
+            </main>
+        </div>
+    );
+};
 
 export default App;

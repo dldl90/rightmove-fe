@@ -1,72 +1,54 @@
-# Getting Started with Create React App
+FED Test
+========
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Instructions
+
+Install required dependencies by running `npm ci`. Then start the project by running `npm start`.
+The start script will start both the api server and the react app (in the development mode) in parallel. 
+`npm test` launches the test runner in the interactive watch mode.
 
 
-https://medium.com/@lavitr01051977/make-your-first-call-to-api-using-redux-saga-15aa995df5b6
-## Available Scripts
+## API
 
-In the project directory, you can run:
+The api is accessible at `http://localhost:3000/api` and provides the following endpoints.
 
-### `yarn start`
+### `GET /properties`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Returns all properties as a list, which looks like:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```json
+[
+    {
+        "id": 73864112,
+        "bedrooms": 3,
+        "summary": "Situated moments from the River Thames in Old Chelsea...",
+        "displayAddress": "CHEYNE WALK, CHELSEA, SW3",
+        "propertyType": "Flat",
+        "price": 1950000,
+        "branchName": "M2 Property, London",
+        "propertyUrl": "/property-for-sale/property-73864112.html",
+        "contactUrl": "/property-for-sale/contactBranch.html?propertyId=73864112",
+        "propertyTitle": "3 bedroom flat for sale",
+        "mainImage": "https://media.rightmove.co.uk/dir/crop/10:9-16:9/38k/37655/53588679/37655_CAM170036_IMG_01_0000_max_476x317.jpg"
+    },
+    {
+        ...
+    }
+]
+```
 
-### `yarn test`
+#### Filter and sort the result set
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In order to filter and sort the result, please the supply relevant query parameters. (e.g. `http://localhost:3000/api/properties?maxPrice=800000`)   
 
-### `yarn build`
+| parameter     | description                                                                                                                                                 |
+|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| propertyTypes | Comma separated list of property types to include in your result set<br/> (e.g. detached, semi-detached, terraced, flat, apartment, maisonette, mews, boat) |
+| minPrice      | The minimum property price <br/> (e.g. 400000)                                                                                                              |
+| maxPrice      | The maximum property price <br/> (e.g. 700000)                                                                                                              |
+| minBeds       | The minimum number of bedrooms <br/> (e.g. 3)                                                                                                               |
+| maxBeds       | The maximum number of bedrooms <br/> (e.g. 5)                                                                                                               |
+| sortBy        | Sort the result by property price or the number of bedrooms <br/> (e.g. price, bedrooms)                                                                    |
+| orderBy       | Order the result in either ascending or descending order <br/> (e.g. asc, desc)                                                                             |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**NOTE** Supplying invalid query parameter (empty, null or undefined) will return an empty list. Please omit query parameters without any value.
