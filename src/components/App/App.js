@@ -11,8 +11,8 @@ const App = () => {
     const PROPERTY_URL = 'http://localhost:4000/api/properties'
     try {
       const result = await fetch(PROPERTY_URL).then(res => res.json());
-      const properties = result.slice(0, 5);
-      setProperties(properties);
+      const propertiesResult = result.slice(0, 5);
+      setProperties(propertiesResult);
     } catch (error) {
       console.error(error);
     }

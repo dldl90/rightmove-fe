@@ -32,7 +32,7 @@ PropertyListing.propTypes = {
 }
 
 PropertyListing.defaultProps = {
-  bag: []
+  properties: []
 }
 
 export default PropertyListing;
